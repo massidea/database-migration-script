@@ -1,2 +1,0 @@
-2010-12-14 13:47:00 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /usr/share/php/cake/libs/debugger.php:673) in [/usr/share/php/cake/libs/controller/controller.php, line 746]
-2010-12-14 13:48:15 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /usr/share/php/cake/libs/debugger.php:673) in [/usr/share/php/cake/libs/controller/controller.php, line 746]
