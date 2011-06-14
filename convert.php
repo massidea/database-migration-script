@@ -52,6 +52,7 @@
 			$k = implode(',', $keys);
 			$v = implode(',', $values);
 
+			mysql_set_charset('utf8');
 			$q = "replace into `massidea`.`$table` ($k) values ($v)";
 			if (DEBUG) 
 				var_dump($q);
@@ -61,6 +62,7 @@
 	}
 
 	function query($table) {
+		mysql_set_charset('latin1');
 		$q = "select * from `$table`";
 		$result = mysql_query($q);
 
