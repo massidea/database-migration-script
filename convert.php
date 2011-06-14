@@ -16,10 +16,10 @@
 	mysql_connect('localhost', 'oibs', '');
 	mysql_select_db('oibs');
 
-//	languages();
-//	country();
+	languages();
+	country();
 	users();
-//	profiles();
+	profiles();
 	contents();
 	tags();
 	groups();
