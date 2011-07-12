@@ -136,7 +136,7 @@
 		$prof = null;
 		
 		foreach ($old_prof as $p) {
-			$prof[] = array('user_id' => $p['id_usr_usp'], 'key' => $p['profile_key_usp'], 'value' => $p['profile_value_usp']);
+			$prof[] = array('user_id' => $p['id_usr_usp'], 'key' => $p['profile_key_usp'], 'value' => $p['profile_value_usp'], 'public' => $p['public_usp']);
 		}
 		insert('profiles', $prof);
 	}
