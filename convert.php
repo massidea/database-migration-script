@@ -245,18 +245,31 @@
 
                 $base = null;
                 $comments = null;
+		$mapping = null;
 
                 $privileges = array(1 => '755', 2 => '751');
 
                 foreach ($old_comments as $c) {
                         $id = COMMENTS_ADD + $c['id_cmt'];
-                        $base[] = array('id' => $id, 'type' => 'Comment', 'creator' => $c['id_usr_cmp'], 'privileges' => $privileges[1]);
+			$id_target = null;
+			if($c['type_cmt'] == 3) { $id_target = CAMPAIGNS_ADD + $c['id_target_cmt']; } 
+			if($c['type_cmt'] == 2) { $id_target = CONTENT_ADD + $c['id_target_cmt']; } 
+			if($c['type_cmt'] == 4) { $id_target = GROUP_ADD + $c['id_target_cmt']; } 
+                        $base[] = array('id' => $id, 'type' => 'Comment', 'creator' => $c['id_usr_cmt'], 'privileges' => $privileges[1]);
                         $comments[] = array('id' => $id, 'type' => 'Comment', 'comment' => $c['body_cmt']);
+                        if($id_target) { 
+				$mapping[] = array(
+					'parent_object' => $id_target,
+					'child_object' => $id,
+					'hardlink' => true,
+					'created' => $c['created_cmt']
+				); 
+			}
                 }
 
                 insert('baseclasses', $base);
                 insert('comments', $comments);
-
+		insert('mapping',$mapping);
 	}
 
 
